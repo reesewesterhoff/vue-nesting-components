@@ -10,6 +10,7 @@
                 <h3 v-show="ninja.show">{{ninja.speciality}}</h3>
             </li>
         </ul>
+        <button v-on:click="deleteNinja">Delete Ninja</button>
     </div>
 </template>
 
@@ -37,6 +38,12 @@ export default {
     //   test: function () {
     //       this.ninjas
     //   }
+
+    // with a reference data type, changes occur in all components using 
+    // that reference
+    deleteNinja: function() {
+        this.ninjas.pop();
+    }
   }
 }
 </script>

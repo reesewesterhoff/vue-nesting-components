@@ -1,17 +1,36 @@
 <template>
   <div>
       <header>
-          <h1>{{title}}</h1>
+          <!-- when passing a primitive prop, changes only occur in the component -->
+          <!-- where they were made -->
+          <h1 v-on:click="changeTitle">{{title}}</h1>
       </header>
   </div>
 </template>
 
 <script>
 export default {
+    props: {
+        title: {
+            type: String
+        }
+    },
   data () {
     return {
-        title: 'Vue Ninjas',
+
     }
+  },
+  methods: {
+      // works but throws error in the console saying not to do it 
+      // because it will be overwritten when parent component re renders
+      changeTitle: function () {
+          this.title = 'Title Changed!'
+      }
+  },
+  computed: {
+    //   changeTitle: function () {
+    //       this.title = 'Title Changed!'
+    //   }
   }
 }
 </script>
