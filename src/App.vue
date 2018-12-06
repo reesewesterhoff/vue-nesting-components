@@ -1,7 +1,8 @@
 <template>
 <!-- display components in the order you want them -->
   <div>
-    <app-header v-bind:title="title"></app-header>
+    <!-- listens for event to happen, takes in what we passed from child -->
+    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
     <app-footer v-bind:title="title"></app-footer>
   </div>
@@ -31,6 +32,13 @@ export default {
                 {name: 'Yoshi', speciality: 'Data Diggin', show: false}
             ],
         title: 'Vue Ninjas'
+    }
+  },
+  methods: {
+    // runs function and changes title
+    // updated title is passed to child, updates both
+    updateTitle: function(updatedTitle) {
+      this.title = updatedTitle;
     }
   }
 }

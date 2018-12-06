@@ -24,7 +24,8 @@ export default {
       // works but throws error in the console saying not to do it 
       // because it will be overwritten when parent component re renders
       changeTitle: function () {
-          this.title = 'Title Changed!'
+          // fires event up to parent, pass name and what you want it to change to
+          this.$emit('changeTitle', 'Title Changed');
       }
   },
   computed: {

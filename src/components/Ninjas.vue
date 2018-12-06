@@ -18,6 +18,7 @@
 export default {
     // recieves props as though it were written in data section
     // props: ['ninjas']
+    
     // can perform validation by making props an object
     // and specifying what it should expect
     // will throw an error if it does not get what it's expecting
