@@ -3,7 +3,7 @@
         <ul>
             <!-- cycle through ninjas array -->
             <li v-for="ninja in ninjas" 
-                :key=ninja 
+                :key=ninja.name 
                 v-on:click="ninja.show = !ninja.show">
                 <h2>{{ninja.name}}</h2>
                 <!-- shows or doesn't show speciality depending on show property -->
@@ -15,17 +15,28 @@
 
 <script>
 export default {
-  data () {
-    return {
-        ninjas: [
-                {name: 'Ryu', speciality: 'Vue Components', show: false},
-                {name: 'Crystal', speciality: 'HTML Wizardry', show: false},
-                {name: 'Hitoshi', speciality: 'Click Events', show: false},
-                {name: 'Tango', speciality: 'Conditionals', show: false},
-                {name: 'Kami', speciality: 'Webpack', show: false},
-                {name: 'Yoshi', speciality: 'Data Diggin', show: false}
-            ]
+    // recieves props as though it were written in data section
+    // props: ['ninjas']
+    // can perform validation by making props an object
+    // and specifying what it should expect
+    // will throw an error if it does not get what it's expecting
+    props: {
+        ninjas: {
+            type: Array,
+            // will fail if ninjas is not passed down
+            required: true
+        }
+    },
+    data () {
+        return {
+       
     }
+  },
+  methods: {
+      // able to access props through methods as well with this.PROPS
+    //   test: function () {
+    //       this.ninjas
+    //   }
   }
 }
 </script>
