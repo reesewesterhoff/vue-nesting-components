@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {bus} from '../main';
+
 export default {
     props: {
         title: {
@@ -25,13 +27,13 @@ export default {
       // because it will be overwritten when parent component re renders
       changeTitle: function () {
           // fires event up to parent, pass name and what you want it to change to
-          this.$emit('changeTitle', 'Title Changed');
+        //   this.$emit('changeTitle', 'Title Changed');
+
+        // changes title locally
+        this.title = 'Vue Wizards';
+        // emits a change on the bus, give it function name and data
+        bus.$emit('titleChanged', 'Vue Wizards');
       }
-  },
-  computed: {
-    //   changeTitle: function () {
-    //       this.title = 'Title Changed!'
-    //   }
   }
 }
 </script>
